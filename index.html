@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bài tập hàm</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
+
+  <!-- Main css -->
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="content row">
+      <div class="content_left col-3">
+        <ul class="d-flex flex-column">
+          <li id="content_1" onclick="handleClickDisplayContent('content_1')" class="listCustom active">
+            Bài 1
+          </li>
+          <li id="content_2" onclick="handleClickDisplayContent('content_2')" class="listCustom">
+            Bài 2
+          </li>
+          <li id="content_3" onclick="handleClickDisplayContent('content_3')" class="listCustom">
+            Bài 3
+          </li>
+          <li id="content_4" onclick="handleClickDisplayContent('content_4')" class="listCustom">
+            Bài 4
+          </li>
+        </ul>
+      </div>
+      <div class="content_right col-9 bg-gradient">
+        <!-- Tính điểm chuẩn -->
+        <div class="content_1">
+          <h2>Quản lý tuyển sinh</h2>
+          <div class="row">
+            <!-- Điểm chuẩn -->
+            <div class="col-4">
+              <div class="item_input mb-3">
+                <input type="number" class="form-control" name="" id="diemChuan" aria-describedby="helpId"
+                  placeholder="Điểm chuẩn" />
+              </div>
+            </div>
+            <!-- Khu vực -->
+            <div class="col-4">
+              <div class="item_input mb-3">
+                <select id="khuVuc" class="form-select" aria-label="Default select example">
+                  <option value="0" selected>Chọn khu vực</option>
+                  <option value="2">A</option>
+                  <option value="1">B</option>
+                  <option value="0.5">C</option>
+                </select>
+              </div>
+            </div>
+            <!-- Đối tượng -->
+            <div class="col-4">
+              <div class="item_input mb-3">
+                <select id="doiTuong" class="form-select" aria-label="Default select example">
+                  <option value="0" selected>Chọn đối tượng</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+            </div>
+            <!-- Điểm môn thứ nhất -->
+            <div class="col-4">
+              <div class="item_input mb-3">
+                <input type="number" class="form-control" name="" id="diemMon1" aria-describedby="helpId"
+                  placeholder="Điểm môn thứ 1" />
+              </div>
+            </div>
+            <!-- Điểm môn thứ hai -->
+            <div class="col-4">
+              <div class="item_input mb-3">
+                <input type="number" class="form-control" name="" id="diemMon2" aria-describedby="helpId"
+                  placeholder="Điểm môn thứ 2" />
+              </div>
+            </div>
+            <!-- Điểm môn thứ ba -->
+            <div class="col-4">
+              <div class="item_input mb-3">
+                <input type="number" class="form-control" name="" id="diemMon3" aria-describedby="helpId"
+                  placeholder="Điểm điểm môn thứ 3" />
+              </div>
+            </div>
+            <div>
+              <button onclick="quanLyTuyenSinh()" class="btnCustom rounded-5 px-5 py-2 border-0">
+                Kết Quả
+              </button>
+            </div>
+            <div id="ketQua" class="bg-opacity-25 p-4 mt-3 rounded-3"></div>
+          </div>
+        </div>
+        <!-- Tính tiền điện -->
+        <div class="content_2 d-none">
+          <h2>Tính tiền điện</h2>
+          <div class="row">
+            <!-- Họ tên -->
+            <div class="col-6">
+              <div class="item_input mb-3">
+                <input type="text" class="form-control" name="" id="hoTen" aria-describedby="helpId"
+                  placeholder="Nhập họ tên" />
+              </div>
+            </div>
+            <!-- Số kw -->
+            <div class="col-6">
+              <div class="item_input mb-3">
+                <input type="number" class="form-control" name="" id="soKw" aria-describedby="helpId"
+                  placeholder="Nhập số kw" />
+              </div>
+            </div>
+            <div>
+              <button id="btnTinhDien" class="rounded-5 px-5 py-2 border-0">
+                Tính tiền điện
+              </button>
+            </div>
+            <div id="ketQua2" class="bg-opacity-25 p-4 mt-3 rounded-3"></div>
+          </div>
+        </div>
+        <!-- Tính thuế thu nhập cá nhân -->
+        <div class="content_3 d-none">
+          <h2>Tính thuế thu nhập cá nhân</h2>
+          <div class="row">
+            <!-- Họ tên -->
+            <div class="col-4">
+              <div class="item_input mb-3">
+                <input type="text" class="form-control" name="" id="nhapHoTen" aria-describedby="helpId"
+                  placeholder="Nhập họ tên" />
+              </div>
+            </div>
+            <!-- Tổng thu nhập năm -->
+            <div class="col-4">
+              <div class="item_input mb-3">
+                <input type="number" class="form-control" name="" id="thuNhapNam" aria-describedby="helpId"
+                  placeholder="Tổng thu nhập năm" />
+              </div>
+            </div>
+            <!-- Số người phụ thuộc -->
+            <div class="col-4">
+              <div class="item_input mb-3">
+                <input type="number" class="form-control" name="" id="nguoiPhuThuoc" aria-describedby="helpId"
+                  placeholder="Số người phụ thuộc" />
+              </div>
+            </div>
+            <div>
+              <button onclick="tinhThuNhapChiuThue()" class="rounded-5 px-5 py-2 border-0">
+                Tính tiền thuế
+              </button>
+            </div>
+            <div id="inRaKetQua" class="bg-opacity-25 p-4 mt-3 rounded-3"></div>
+          </div>
+        </div>
+        <!-- Tính tiền cáp -->
+        <div class="content_4 d-none">
+          <h2>Tính tiền cáp</h2>
+          <div class="row">
+            <!-- Chọn loại khách hàng -->
+            <div class="col-4">
+              <div class="dropdown item_input mb-3">
+                <select onchange="handleChangeSelected()" id="loaiKhachHang" class="form-select"
+                  aria-label="Default select example">
+                  <option value="0" selected>Chọn loại khách hàng</option>
+                  <option value="nhaDan">Nhà Dân</option>
+                  <option value="doanhNghiep">Doanh nghiệp</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <input type="text" class="form-control" name="" id="maKhachHang" aria-describedby="helpId"
+                placeholder="Nhập mã khách hàng" />
+            </div>
+            <div class="col-4">
+              <input type="number" class="form-control" name="" id="soKenhCaoCap" aria-describedby="helpId"
+                placeholder="Số kênh cao cấp" />
+            </div>
+            <div class="col-4">
+              <input type="number" class="form-control d-none" name="" id="soKetNoi" aria-describedby="helpId"
+                placeholder="Số kết nối" />
+            </div>
+          </div>
+          <div>
+            <button onclick="tinhTienCap()" class="rounded-5 px-5 py-2 mt-3 border-0">
+              Tính tiền cáp
+            </button>
+          </div>
+          <div id="inRaKetQua1" class="bg-opacity-25 p-4 mt-3 rounded-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+    crossorigin="anonymous"></script>
+
+  <!-- File js -->
+  <script src="./index.js"></script>
+  <script>
+    function handleClickDisplayContent(classname) {
+      var contents = ["content_1", "content_2", "content_3", "content_4"];
+      if (!document.querySelector(`#${classname}.active`)) {
+        for (var i = 0; i < contents.length; i++) {
+          if (document.querySelector(`#${contents[i]}.active`)) {
+            document
+              .querySelector(`#${contents[i]}`)
+              .classList.remove("active");
+          }
+          if (
+            contents[i] === classname &&
+            document.querySelector(`.${classname}.d-none`)
+          ) {
+            document
+              .querySelector(`.${classname}`)
+              .classList.remove("d-none");
+          } else {
+            if (!document.querySelector(`.${contents[i]}.d-none`)) {
+              document
+                .querySelector(`.${contents[i]}`)
+                .classList.add("d-none");
+            }
+          }
+        }
+        document.querySelector(`#${classname}`).classList.add("active");
+      }
+    }
+  </script>
+</body>
+
+</html>
